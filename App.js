@@ -23,16 +23,19 @@ import BookMarkScreen from "./screens/bookmark"
 const Drawer = createDrawerNavigator();
 import { DrawerContent } from "./screens/drawerContent";
 
+import RootStackScreen from "./screens/rootStackScreen";
+
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
+      <RootStackScreen />
+      {/* <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
         <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
         <Drawer.Screen name="Support" component={SupportScreen} />
         <Drawer.Screen name="Settings" component={SettingScreen} />
         <Drawer.Screen name="Bookmark" component={BookMarkScreen} />
-      </Drawer.Navigator>
+      </Drawer.Navigator> */}
     </NavigationContainer>
   )
 }
