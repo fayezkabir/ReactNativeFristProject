@@ -17,10 +17,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { AuthContext } from "./../components/context";
 
 
 export const DrawerContent = props => {
     const [isDarkTheme , setIsDarkTheme] = React.useState(false)
+    const{ signOut } = React.useContext(AuthContext);
 
     const toggleTheme = () => {
             setIsDarkTheme(!isDarkTheme);
@@ -109,7 +111,7 @@ export const DrawerContent = props => {
                     <MaterialCommunityIcons name="account" color={color} size={size} />
                 )
                 }
-                    onPress={() => { }}
+                    onPress={() => { signOut() }}
                 />
 
             </Drawer.Section>

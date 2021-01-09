@@ -2,12 +2,10 @@ import React from "react";
 import { View, Platform, Text, StyleSheet, Button, TouchableOpacity, TextInput , StatusBar } from "react-native";
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from "react-native-linear-gradient";
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import { color } from "react-native-reanimated";
+import { AuthContext } from "./../../components/context";
 
 const SignInScreen = props => {
     const { navigation } = props;
@@ -17,6 +15,8 @@ const SignInScreen = props => {
         check_textInputChange: false,
         secureTextEntry: true
     });
+
+    const { signIn} = React.useContext(AuthContext);
 
     const textInputChange = value => {
         if (value.length != 0) {
@@ -89,9 +89,11 @@ const SignInScreen = props => {
                 </View>
 
                 <View style={styles.button}>
+                    <TouchableOpacity style={styles.signIn} onPress={() => {signIn()}}>
                     <LinearGradient colors={["#08d4c4","#01ab9d"]} style={styles.signIn}>
                         <Text style={styles.textSign}>Sign In</Text>
                     </LinearGradient>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate("SignUpScreen")}
                     style={[styles.signIn,
                         {borderColor : "#009387",
